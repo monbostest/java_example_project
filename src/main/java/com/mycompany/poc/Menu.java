@@ -21,7 +21,7 @@ public class Menu {
 
     public void bucleMenu() {
         mostrarMenuPrincipal();
-        int opcion = consola.leerEntero();
+        int opcion = consola.leerEntero("Opcion:");
         switch (opcion) {
         case MENU_ASTERISCOS:
             asteriscos.ejecutar();

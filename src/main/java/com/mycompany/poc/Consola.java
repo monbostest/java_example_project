@@ -10,12 +10,13 @@ public class Consola {
         this.in = new Scanner(System.in);
     }
 
-    public int leerEntero() {
+    public int leerEntero(String mensaje) {
         try {
+            imprimirMensaje(mensaje);
             String opcion = in.nextLine();
             return Integer.parseInt(opcion);
         } catch (Exception e) {
-            return leerEntero();
+            return leerEntero(mensaje);
         }
     }
 
