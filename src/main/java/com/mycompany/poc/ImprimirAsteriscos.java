@@ -1,11 +1,12 @@
 package com.mycompany.poc;
 
-import java.util.Scanner;
-
-/**
- *
- */
 public class ImprimirAsteriscos {
+
+    private Consola consola;
+
+    public ImprimirAsteriscos(Consola consola) {
+        this.consola = consola;
+    }
 
   public void ejecutar() {
       int first = GenerarAsteriscos();
@@ -13,11 +14,8 @@ public class ImprimirAsteriscos {
   }
 
   public int GenerarAsteriscos() {
-      Scanner teclado = new Scanner(System.in);
-      System.out.println("digite los numeros que desee tener");
-      String numeros = teclado.nextLine();
-
-      String[] arregloLetras = numeros.split(",");
+      consola.imprimirMensaje("digite los numeros que desee tener");
+      String[] arregloLetras = consola.leerCadena().split(",");
       return numeroMayor(arregloLetras);
   }
 
@@ -37,11 +35,11 @@ public class ImprimirAsteriscos {
   }
 
   public void imprimirAsteriscos(int x){
-      System.out.println("la cantidad en * del numero mayor son..  ");
+      consola.imprimirMensaje("la cantidad en * del numero mayor son..  ");
       String n = "";
       for (int i = 0; i < x; i++){
           n += " ";
-          System.out.println(n + "*");
+          consola.imprimirMensaje(n + "*");
       }
   }
 
