@@ -8,9 +8,9 @@ public class ImprimirAsteriscos {
         this.consola = consola;
     }
 
-  public void ejecutar() {
+  public void ejecutar(char simbolo) {
       int first = GenerarAsteriscos();
-      imprimirAsteriscos(first);
+      imprimirAsteriscos(first, simbolo);
   }
 
   public int GenerarAsteriscos() {
@@ -34,12 +34,12 @@ public class ImprimirAsteriscos {
       return firts;
   }
 
-  public void imprimirAsteriscos(int x){
-      consola.imprimirMensaje("la cantidad en * del numero mayor son..  ");
+  public void imprimirAsteriscos(int x, char simbolo){
+      consola.imprimirMensaje("la cantidad en " + simbolo + " del numero mayor son..  ");
       String n = "";
       for (int i = 0; i < x; i++){
           n += " ";
-          consola.imprimirMensaje(n + "*");
+          consola.imprimirMensaje(n + simbolo);
       }
   }
 

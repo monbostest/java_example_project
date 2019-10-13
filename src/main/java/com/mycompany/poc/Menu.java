@@ -24,7 +24,7 @@ public class Menu {
         int opcion = consola.leerEntero("Opcion:");
         switch (opcion) {
         case MENU_ASTERISCOS:
-            asteriscos.ejecutar();
+            asteriscos.ejecutar('#');
             bucleMenu();
         case MENU_SALIR:
             break;
