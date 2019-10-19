@@ -2,6 +2,8 @@ package com.mycompany.poc;
 
 import java.util.Scanner;
 
+import com.mycompany.laberinto.ElementoLaberinto;
+
 public class Consola {
 
     private Scanner in;
@@ -26,5 +28,13 @@ public class Consola {
 
 	public String leerCadena() {
 		return in.nextLine();
+	}
+
+	public void imprimirCaracter(ElementoLaberinto elemento) {
+        System.out.print(elemento.getUnicode());
+	}
+
+	public void retornarALaLinea() {
+        System.out.println();
 	}
 }
