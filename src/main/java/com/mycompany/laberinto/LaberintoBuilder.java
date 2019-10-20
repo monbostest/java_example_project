@@ -1,8 +1,11 @@
 package com.mycompany.laberinto;
 
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.mycompany.poc.Consola;
 
@@ -14,13 +17,29 @@ public class LaberintoBuilder {
         this.consola = consola;
     }
 
-    public Optional<Laberinto> cargarDesdeArchivo() {
-        List<String> contenido = Arrays.asList(
-                new StringBuilder().append(ElementoLaberinto.MURO.valor).append(ElementoLaberinto.ESPACIO.valor)
-                        .append(ElementoLaberinto.MURO.valor).toString(),
-                new StringBuilder().append(ElementoLaberinto.MURO.valor).append(ElementoLaberinto.ESPACIO.valor)
-                        .append(ElementoLaberinto.PERSONAJE.valor).toString());
-        return Laberinto.from(contenido);
+    public Laberinto cargarDesdeArchivo() {
+        List<String> contenido = new ArrayList<String>();
+        try (FileReader reader = new FileReader((getFileFromResources("laberinto.txt")));
+                BufferedReader br = new BufferedReader(reader)) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                contenido.add(line);
+            }
+        } catch (Exception ex) {
+            consola.imprimirMensaje(ex.getMessage());
+        }
+        return Laberinto.desde(contenido);
+    }
+
+    private File getFileFromResources(String fileName) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("file is not found!");
+        } else {
+            return new File(resource.getFile());
+        }
     }
 
 }

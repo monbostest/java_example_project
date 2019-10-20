@@ -12,7 +12,7 @@ public enum ElementoLaberinto {
         this.valor = valor;
         this.unicode = unicode;
     }
-	public static ElementoLaberinto from(char valor, ElementoLaberinto porDefecto) {
+	public static ElementoLaberinto buscar(char valor, ElementoLaberinto porDefecto) {
         for(ElementoLaberinto elemento: values()) {
             if (elemento.valor == valor) {
                 return elemento;

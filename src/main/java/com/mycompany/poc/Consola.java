@@ -22,19 +22,34 @@ public class Consola {
         }
     }
 
+    public int leerTecla(String mensaje) {
+        try {
+            imprimirMensaje(mensaje);
+            String opcion = in.nextLine();
+            System.out.println((int) opcion.charAt(0));
+            return 0;
+        } catch (Exception e) {
+            return 1;
+        }
+    }
+
     public void imprimirMensaje(String msg) {
         System.out.println(msg);
     }
 
-	public String leerCadena() {
-		return in.nextLine();
-	}
+    public String leerCadena() {
+        return in.nextLine();
+    }
 
-	public void imprimirCaracter(ElementoLaberinto elemento) {
+    public void imprimirCaracter(ElementoLaberinto elemento) {
         System.out.print(elemento.getUnicode());
-	}
+    }
 
-	public void retornarALaLinea() {
+    public void limpiarPantalla() {
+        System.out.print("\033[2J");
+    }
+
+    public void retornarALaLinea() {
         System.out.println();
-	}
+    }
 }

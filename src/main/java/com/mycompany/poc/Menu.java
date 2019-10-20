@@ -1,7 +1,5 @@
 package com.mycompany.poc;
 
-import java.util.Optional;
-
 import com.mycompany.laberinto.Laberinto;
 import com.mycompany.laberinto.LaberintoBuilder;
 
@@ -27,6 +25,7 @@ public class Menu {
     }
 
     public void bucleMenu() {
+        consola.limpiarPantalla();
         mostrarMenuPrincipal();
         int opcion = consola.leerEntero("Opcion:");
         switch (opcion) {
@@ -34,14 +33,24 @@ public class Menu {
             asteriscos.ejecutar('D');
             bucleMenu();
         case MENU_LABERINTO:
-            Optional<Laberinto> maybeLaberinto = laberintoBuilder.cargarDesdeArchivo();
-            maybeLaberinto.ifPresent(lab -> lab.imprimir(consola));
+            Laberinto laberinto = laberintoBuilder.cargarDesdeArchivo();
+            if (laberinto != null) {
+                bucleLaberinto(laberinto);
+            }
             bucleMenu();
         case MENU_SALIR:
             break;
         default:
             break;
         }
+    }
+
+    private void bucleLaberinto(Laberinto laberinto) {
+        consola.limpiarPantalla();
+        laberinto.imprimirUsando(consola);
+        int opcion = consola.leerTecla("Z|Q|S|D:");
+        System.out.println(opcion);
+        bucleLaberinto(laberinto);
     }
 
     private void mostrarTitulo() {

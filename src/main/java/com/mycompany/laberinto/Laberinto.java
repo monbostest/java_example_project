@@ -12,7 +12,7 @@ public class Laberinto {
         this.maze = maze;
     }
 
-    public void imprimir(Consola consola) {
+    public void imprimirUsando(Consola consola) {
         for (int i = 0; i < maze.length; i++) {
             ElementoLaberinto[] fila = maze[i];
             for (int j = 0; j < fila.length; j++) {
@@ -23,14 +23,13 @@ public class Laberinto {
     }
 
     // TODO: crear matriz del laberinto
-    public static Optional<Laberinto> from(List<String> contenido) {
+    public static Laberinto desde(List<String> contenido) {
+        // si no hay contenido, retornal null
         if (contenido.size() == 0) {
-            // TODO: Optional.empty();
-            return Optional.empty();
+            return null;
         } else {
-            // TODO: atraversas la lista, crear una matriz con el contenido, llamar
-            // Optional.of(...)
-            // TODO: utilizar la funcion ElementosLaberinto.from(valorEnChar,
+            // TODO: atraversar la lista, crear una matriz con el contenido, llamar constructor
+            // TODO: utilizar la funcion ElementosLaberinto.desde(valorEnChar,
             // valorPorDefecto)
             int colsAmt = contenido.get(0).length();
             ElementoLaberinto[][] maze = new ElementoLaberinto[contenido.size()][colsAmt];
@@ -38,11 +37,11 @@ public class Laberinto {
                 String linea = contenido.get(i);
                 char[] colValues = linea.toCharArray();
                 for (int j = 0; j < colValues.length; j++) {
-                    char cell = colValues[j];
-                    maze[i][j] = ElementoLaberinto.from(cell, ElementoLaberinto.MURO);
+                    char celula = colValues[j];
+                    maze[i][j] = ElementoLaberinto.buscar(celula, ElementoLaberinto.MURO);
                 }
             }
-            return Optional.of(new Laberinto(maze));
+            return new Laberinto(maze);
         }
     }
 }
