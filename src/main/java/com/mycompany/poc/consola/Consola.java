@@ -1,8 +1,8 @@
-package com.mycompany.poc;
+package com.mycompany.poc.consola;
 
 import java.util.Scanner;
 
-import com.mycompany.laberinto.ElementoLaberinto;
+import com.mycompany.poc.laberinto.ElementoLaberinto;
 
 public class Consola {
 

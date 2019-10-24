@@ -1,7 +1,9 @@
 package com.mycompany.poc;
 
-import com.mycompany.laberinto.Laberinto;
-import com.mycompany.laberinto.LaberintoBuilder;
+import com.mycompany.poc.asteriscos.ImprimirAsteriscos;
+import com.mycompany.poc.consola.Consola;
+import com.mycompany.poc.laberinto.Laberinto;
+import com.mycompany.poc.laberinto.LaberintoBuilder;
 
 public class Menu {
 
@@ -14,9 +16,9 @@ public class Menu {
     private Consola consola;
 
     public Menu(Consola consola, ImprimirAsteriscos asteriscos, LaberintoBuilder laberintoBuilder) {
-        this.consola = consola;
         this.asteriscos = asteriscos;
         this.laberintoBuilder = laberintoBuilder;
+        this.consola = consola;
     }
 
     public void ejecutar() {
@@ -47,10 +49,10 @@ public class Menu {
 
     private void bucleLaberinto(Laberinto laberinto) {
         consola.limpiarPantalla();
-        laberinto.imprimirUsando(consola);
+        laberinto.imprimir();
         int opcion = consola.leerTecla("Z|Q|S|D:");
-        System.out.println(opcion);
-        bucleLaberinto(laberinto);
+
+        // bucleLaberinto(laberinto);
     }
 
     private void mostrarTitulo() {

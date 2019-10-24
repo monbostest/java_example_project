@@ -1,9 +1,7 @@
-package com.mycompany.laberinto;
+package com.mycompany.poc.laberinto;
 
 public enum ElementoLaberinto {
-    MURO('@', "#"), 
-    ESPACIO('_', "_"), 
-    PERSONAJE('x', "\uD83D\uDE00");
+    MURO('@', "|"), ESPACIO('_', " "), PERSONAJE('x', "\uD83D\uDE00");
 
     char valor;
     String unicode;
@@ -12,15 +10,16 @@ public enum ElementoLaberinto {
         this.valor = valor;
         this.unicode = unicode;
     }
-	public static ElementoLaberinto buscar(char valor, ElementoLaberinto porDefecto) {
-        for(ElementoLaberinto elemento: values()) {
+
+    public static ElementoLaberinto buscar(char valor, ElementoLaberinto porDefecto) {
+        for (ElementoLaberinto elemento : values()) {
             if (elemento.valor == valor) {
                 return elemento;
             }
         }
-		return porDefecto;
+        return porDefecto;
     }
-    
+
     public String getUnicode() {
         return this.unicode;
     }

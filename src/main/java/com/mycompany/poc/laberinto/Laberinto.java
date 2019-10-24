@@ -1,36 +1,41 @@
-package com.mycompany.laberinto;
+package com.mycompany.poc.laberinto;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.mycompany.poc.Consola;
+import com.mycompany.poc.consola.Consola;
+import com.mycompany.poc.consola.ConsolaAvanzada;
 
 public class Laberinto {
     private ElementoLaberinto[][] maze;
+    private ConsolaAvanzada consolaAvanzada;
+    private Consola consola;
 
-    private Laberinto(ElementoLaberinto[][] maze) {
+    private Laberinto(ElementoLaberinto[][] maze, ConsolaAvanzada consolaAvanzada, Consola consola) {
         this.maze = maze;
+        this.consolaAvanzada = consolaAvanzada;
+        this.consola = consola;
     }
 
-    public void imprimirUsando(Consola consola) {
+    // TODO: add instructions
+    public void imprimir() {
+        // 15 x 187
         for (int i = 0; i < maze.length; i++) {
             ElementoLaberinto[] fila = maze[i];
             for (int j = 0; j < fila.length; j++) {
-                consola.imprimirCaracter(fila[j]);
+                consolaAvanzada.imprimirElemento(fila[j], j, i);
             }
-            consola.retornarALaLinea();
         }
     }
 
-    // TODO: crear matriz del laberinto
-    public static Laberinto desde(List<String> contenido) {
+    // ------------------------------------------------------------------------
+    // Funcionas estáticas no dependen de una instancia en particular
+    // ------------------------------------------------------------------------
+    // TODO: add instructions
+    public static Laberinto desde(List<String> contenido, ConsolaAvanzada consolaAvanzada, Consola consola) {
         // si no hay contenido, retornal null
         if (contenido.size() == 0) {
             return null;
         } else {
-            // TODO: atraversar la lista, crear una matriz con el contenido, llamar constructor
-            // TODO: utilizar la funcion ElementosLaberinto.desde(valorEnChar,
-            // valorPorDefecto)
             int colsAmt = contenido.get(0).length();
             ElementoLaberinto[][] maze = new ElementoLaberinto[contenido.size()][colsAmt];
             for (int i = 0; i < contenido.size(); i++) {
@@ -41,7 +46,7 @@ public class Laberinto {
                     maze[i][j] = ElementoLaberinto.buscar(celula, ElementoLaberinto.MURO);
                 }
             }
-            return new Laberinto(maze);
+            return new Laberinto(maze, consolaAvanzada, consola);
         }
     }
 }
