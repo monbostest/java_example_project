@@ -19,9 +19,10 @@ public class Menu {
         bucleMenu();
     }
 
-    public void bucleMenu() {
+   public void bucleMenu() {
         mostrarMenuPrincipal();
         int opcion = consola.leerEntero("Opcion:");
+        
         switch (opcion) {
         case MENU_ASTERISCOS:
             asteriscos.ejecutar('D');
@@ -29,7 +30,8 @@ public class Menu {
         case MENU_SALIR:
             break;
         default:
-            break;
+            consola.imprimirMensaje("Digito no valido, vuelva a intertarlo");
+            ejecutar();
         }
     }
 
