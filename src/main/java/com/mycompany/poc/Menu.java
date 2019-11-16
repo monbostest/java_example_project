@@ -1,17 +1,22 @@
 package com.mycompany.poc;
 
+import com.mycompany.poc.mascotas.LeerMascotas;
+
 public class Menu {
 
     public static final int MENU_SALIR = 0;
     public static final int MENU_ASTERISCOS = 1;
+    public static final int MENU_MASCOTAS = 2;
 
     private ImprimirAsteriscos asteriscos;
 
     private Consola consola;
+    private LeerMascotas mascotas;
 
-    public Menu(Consola consola, ImprimirAsteriscos asteriscos) {
+    public Menu(Consola consola, ImprimirAsteriscos asteriscos, LeerMascotas mascotas) {
         this.consola = consola;
         this.asteriscos = asteriscos;
+        this.mascotas = mascotas;
     }
 
     public void ejecutar() {
@@ -26,6 +31,9 @@ public class Menu {
         switch (opcion) {
         case MENU_ASTERISCOS:
             asteriscos.ejecutar('D');
+            bucleMenu();
+        case MENU_MASCOTAS:
+            mascotas.ejecutar();
             bucleMenu();
         case MENU_SALIR:
             break;
@@ -42,6 +50,7 @@ public class Menu {
     private void mostrarMenuPrincipal() {
         consola.imprimirMensaje("Seleccione una de las siguientes opciones:");
         consola.imprimirMensaje("[" + MENU_ASTERISCOS + "] Imprimir asteriscos");
+        consola.imprimirMensaje("[" + MENU_MASCOTAS + "] 🐶  Mostrar mascotas");
         consola.imprimirMensaje("[" + MENU_SALIR + "] Salir");
     }
 

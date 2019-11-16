@@ -28,3 +28,8 @@ target/
 .project
 .settings/
 .vscode/
+
+.idea/
+*.iml
+
+.DS_Store
