@@ -27,4 +27,8 @@ public class Consola {
 	public String leerCadena() {
 		return in.nextLine();
 	}
+
+    public Object leer_nombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

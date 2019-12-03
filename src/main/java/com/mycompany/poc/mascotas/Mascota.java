@@ -1,7 +1,11 @@
 package com.mycompany.poc.mascotas;
 
-public class Mascota {
 
+import static java.lang.System.in;
+
+
+public class Mascota {
+    
     private String nombre;
     private String raza;
     private Genero genero;
@@ -23,7 +27,17 @@ public class Mascota {
 
 	public static Mascota transformarEnMascota(String linea) {
         // TODO: transformar la linea en una mascota
-		return null;
+            try {
+            imprimirMensaje(linea);
+        } catch (Exception e) {
+            return transformarEnMascota(linea);
+        }
+            return null;
 	}
+        
+        private static void imprimirMensaje(String linea) {
+        System.out.println(linea);
+        
+    }
     
 }

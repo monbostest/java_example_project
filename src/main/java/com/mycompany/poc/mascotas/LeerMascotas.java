@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mycompany.poc.Consola;
+import java.util.Scanner;
 
 public class LeerMascotas {
 
@@ -20,13 +21,13 @@ public class LeerMascotas {
         this.archivo = archivo;
     }
 
-	public void ejecutar() {
-        consola.imprimirMensaje("========================");
+	public void ejecutar() {     
         consola.imprimirMensaje("Se encontraron las siguientes mascotas:");
         for (Mascota mascota: leerMascotas(leerArchivo(archivo))) {
             consola.imprimirMensaje(mascota.toString());
         }
-        consola.imprimirMensaje("========================");
+        consola.imprimirMensaje("Vuelva a seleccionar una opcion ");
+        
     }
 
     private List<Mascota> leerMascotas(File file) {
@@ -43,6 +44,7 @@ public class LeerMascotas {
             }
         } catch(IOException err) {
             // ignora el mensaje de error
+          
             err.printStackTrace();
         }
         return mascotas;

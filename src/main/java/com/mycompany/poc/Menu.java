@@ -44,13 +44,13 @@ public class Menu {
     }
 
     private void mostrarTitulo() {
-        consola.imprimirMensaje("== Bienvenido a la aplicación ==");
+        consola.imprimirMensaje("  ---  Welcome to aplication  ----  ");
     }
 
     private void mostrarMenuPrincipal() {
-        consola.imprimirMensaje("Seleccione una de las siguientes opciones:");
+        consola.imprimirMensaje("select one option:");
         consola.imprimirMensaje("[" + MENU_ASTERISCOS + "] Imprimir asteriscos");
-        consola.imprimirMensaje("[" + MENU_MASCOTAS + "] 🐶  Mostrar mascotas");
+        consola.imprimirMensaje("[" + MENU_MASCOTAS + "] Mostrar mascotas");
         consola.imprimirMensaje("[" + MENU_SALIR + "] Salir");
     }
 
