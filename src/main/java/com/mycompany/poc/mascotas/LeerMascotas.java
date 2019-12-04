@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mycompany.poc.Consola;
-import java.util.Scanner;
 
 public class LeerMascotas {
 
@@ -44,7 +43,6 @@ public class LeerMascotas {
             }
         } catch(IOException err) {
             // ignora el mensaje de error
-          
             err.printStackTrace();
         }
         return mascotas;
