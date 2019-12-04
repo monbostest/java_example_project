@@ -1,7 +1,7 @@
 package com.mycompany.poc.mascotas;
 
 public enum Genero {
-    Masculino("H"), Femenino("F");
+    Masculino("M"), Femenino("F");
 
     private String value;
 

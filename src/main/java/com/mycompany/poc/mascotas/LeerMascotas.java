@@ -20,35 +20,33 @@ public class LeerMascotas {
         this.archivo = archivo;
     }
 
-	public void ejecutar() {     
+    public void ejecutar() {
         consola.imprimirMensaje("Se encontraron las siguientes mascotas:");
-        for (Mascota mascota: leerMascotas(leerArchivo(archivo))) {
+        for (Mascota mascota : leerMascotas(leerArchivo(archivo))) {
             consola.imprimirMensaje(mascota.toString());
         }
-        consola.imprimirMensaje("Vuelva a seleccionar una opcion ");
-        
     }
 
-    private List<Mascota> leerMascotas(File file) {
+    List<Mascota> leerMascotas(File file) {
         List<Mascota> mascotas = new ArrayList<>();
-        if (file == null) return mascotas;
+        if (file == null)
+            return mascotas;
 
-        try (FileReader reader = new FileReader(file);
-             BufferedReader br = new BufferedReader(reader)) {
+        try (FileReader reader = new FileReader(file); BufferedReader br = new BufferedReader(reader)) {
 
             String linea;
             while ((linea = br.readLine()) != null) {
                 Mascota mascota = Mascota.transformarEnMascota(linea);
                 // TODO: adicionar la mascota al arreglo SOLO si no es NULL
             }
-        } catch(IOException err) {
+        } catch (IOException err) {
             // ignora el mensaje de error
             err.printStackTrace();
         }
         return mascotas;
     }
 
-    private File leerArchivo(String fileName) {
+    File leerArchivo(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
         if (resource != null) {

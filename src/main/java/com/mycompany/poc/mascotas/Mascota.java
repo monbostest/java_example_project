@@ -1,11 +1,8 @@
 package com.mycompany.poc.mascotas;
 
-
-import static java.lang.System.in;
-
+import java.util.Objects;
 
 public class Mascota {
-    
     private String nombre;
     private String raza;
     private Genero genero;
@@ -18,26 +15,28 @@ public class Mascota {
 
     public String toString() {
         StringBuilder buf = new StringBuilder();
-        buf
-        .append("Nombre: ").append(nombre)
-        .append("Raza: ").append(raza)
-        .append("Genero: ").append(genero.value());
+        buf.append("Nombre: ").append(nombre).append(", Raza: ").append(raza).append(", Genero: ")
+                .append(genero.value());
         return buf.toString();
     }
 
-	public static Mascota transformarEnMascota(String linea) {
+    public static Mascota transformarEnMascota(String linea) {
         // TODO: transformar la linea en una mascota
-            try {
-            imprimirMensaje(linea);
-        } catch (Exception e) {
-            return transformarEnMascota(linea);
-        }
-            return null;
-	}
-        
-        private static void imprimirMensaje(String linea) {
-        System.out.println(linea);
-        
+        return null;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Mascota mascota = (Mascota) o;
+        return Objects.equals(nombre, mascota.nombre) && Objects.equals(raza, mascota.raza) && genero == mascota.genero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, raza, genero);
+    }
 }
